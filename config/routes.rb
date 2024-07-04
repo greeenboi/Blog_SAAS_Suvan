@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/post/new", to: "blog_post#new", as: "new_post"
-  get "/post/:id/edit", to: "blog_post#edit", as: "edit_post"
   post "/post", to: "blog_post#create", as: "blog_posts"
+  get "/post/:id/edit", to: "blog_post#edit", as: "edit_post"
+  patch "/post/:id", to: "blog_post#update", as: "blog_post"
   get "/post/:id", to: "blog_post#show", as: "post"
   get "/postnotfound/:id", to: "blog_post#postnotfound"
 

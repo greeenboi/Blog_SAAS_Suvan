@@ -1,0 +1,22 @@
+<%= form_with model: blog_post do |form| %>
+  <div style="margin-bottom: 10px;">
+    <%= form.label :title, style: "display: block; margin-bottom: 5px;" %>
+    <%= form.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <%= form.label :body, style: "display: block; margin-bottom: 5px;" %>
+    <%= form.text_area :body, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; height: 100px;" %>
+  </div>
+  <% if form.object.errors.any? %>
+    <div style="background-color: #f44336; color: white; padding: 10px 20px; border-radius: 4px; margin-bottom: 10px;">
+      <ul style="margin: 0;">
+        <% form.object.errors.full_messages.each do |msg| %>
+          <li style="list-style: none"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.button button_text, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" %>
+  </div>
+<% end %>

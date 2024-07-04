@@ -1,0 +1,6 @@
+<body style="background-color: #F0F0F0; font-family: 'Candara Light', serif; font-size: 18px; color: #2E2F30; display: block; padding: 10px">
+<h1>Edit Post <%= @blog_post.id %></h1>
+
+<%= render partial: "form", locals: {blog_post: @blog_post, button_text: "Edit Post"} %>
+
+</body>
