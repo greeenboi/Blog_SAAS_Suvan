@@ -1,0 +1,13 @@
+<body style="background-color: #F0F0F0; font-family: 'Candara Light',serif; font-size: 18px; color: #2E2F30; display: block">
+  <h1>
+    Blog Post
+  </h1>
+  <% @blog_posts.each do |blog_post| %>
+    <div style="width: 80%; margin: 100px; padding: 25px; border: solid 2px #2E2F30; border-radius: 16px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-weight: bold">
+        <%= link_to blog_post.title, post_path(blog_post) %>
+      </h2>
+      <p><%= blog_post.body %></p>
+    </div>
+  <% end %>
+</body>
