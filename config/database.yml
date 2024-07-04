@@ -85,5 +85,8 @@ test:
 production:
   <<: *default
   database: ruby_blog_production
-  username: ruby_blog
-  password: <%= ENV["RUBY_BLOG_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: '#Heavenwater1'
