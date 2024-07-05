@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Define the routes for the BlogPostController CRUD OPS
   get "/post/new", to: "blog_post#new", as: "new_post"
   post "/post", to: "blog_post#create", as: "blog_posts"
   get "/post/:id/edit", to: "blog_post#edit", as: "edit_post"
   patch "/post/:id", to: "blog_post#update", as: "blog_post"
+  delete "/post/:id", to: "blog_post#delete"
   get "/post/:id", to: "blog_post#show", as: "post"
+
+  # Define the route for the postnotfound page
   get "/postnotfound/:id", to: "blog_post#postnotfound"
 
   # Defines the root path route ("/")

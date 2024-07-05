@@ -1,5 +1,15 @@
 <body style="background-color: #F0F0F0; font-family: 'Candara Light', serif; font-size: 18px; color: #2E2F30; display: block; padding: 10px">
-<h1>Edit Post <%= @blog_post.id %></h1>
+<nav style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 10px; padding-left: 10px; padding-right: 10px; max-width: 100vw">
+  <h1>Edit Post <%= @blog_post.id %></h1>
+  <%=
+    button_to "Delete Post",
+    @blog_post,
+    method: :delete,
+    form: {style: "display: inline;"},
+    style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" ,
+    data: { turbo_confirm: "Are you sure you want to delete this post?" }
+  %>
+</nav>
 
 <%= render partial: "form", locals: {blog_post: @blog_post, button_text: "Edit Post"} %>
 
