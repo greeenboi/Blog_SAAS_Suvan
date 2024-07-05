@@ -11,6 +11,23 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <nav style="width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px;">
+      <% if user_signed_in? %>
+        <%= link_to "Profile", edit_user_registration_path, style:"background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+      <% else %>
+        <%= link_to 'Sign up', new_user_registration_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+        <%= link_to 'Sign in', new_user_session_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
+
+<script>
+    function redirectToUrl(path){
+        window.location.href = path;
+    }
+</script>
