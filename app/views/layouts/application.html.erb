@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -13,15 +13,36 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav style="width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px;">
-      <% if user_signed_in? %>
-        <%= link_to "Profile", edit_user_registration_path, style:"background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-      <% else %>
-        <%= link_to 'Sign up', new_user_registration_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-        <%= link_to 'Sign in', new_user_session_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-      <% end %>
-    </nav>
+    <% unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) %>
+      <nav style="width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px;">
+        <% if user_signed_in? %>
+          <!-- Profile Link -->
+          <%= link_to edit_user_registration_path, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;" do %>
+            <div class="icon-text-container">
+              <i class="fas fa-user"></i>
+              <span class="hover-text">Profile</span>
+            </div>
+          <% end %>
+
+          <!-- New Post Link -->
+          <%= link_to new_post_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;" do %>
+            <div class="icon-text-container">
+              <i class="fas fa-feather-alt"></i>
+              <span class="hover-text">New Post</span>
+            </div>
+          <% end %>
+          <%= button_to destroy_user_session_path, method: :delete, form: {style: "display: inline;"}, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;", data: { turbo_confirm: "Do you wish to sign out?"} do %>
+            <div class="icon-text-container">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="hover-text">Sign Out</span>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+          <%= link_to 'Sign in', new_user_session_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+        <% end %>
+      </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

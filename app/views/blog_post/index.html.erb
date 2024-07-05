@@ -3,9 +3,6 @@
     <h1>
       Blog Post
     </h1>
-    <button onclick="redirectToNewPost()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
-      New Post
-    </button>
   </nav>
   <% @blog_posts.each do |blog_post| %>
     <div style="width: 80%; margin: 100px; padding: 25px; border: solid 2px #2E2F30; border-radius: 16px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
@@ -16,8 +13,3 @@
     </div>
   <% end %>
 </body>
-<script>
-    function redirectToNewPost() {
-        window.location.href = '<%= new_post_path %>';
-    }
-</script>
