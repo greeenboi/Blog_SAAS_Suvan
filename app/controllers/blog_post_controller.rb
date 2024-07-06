@@ -2,7 +2,7 @@ class BlogPostController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :postnotfound]
   before_action :set_blog_post, only: [:edit, :update, :show, :delete]
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
   end
 
   def new
@@ -33,7 +33,7 @@ class BlogPostController < ApplicationController
 
   def show
     rescue ActiveRecord::RecordNotFound
-      redirect_to "/postnotfound/#{params[:id]}"
+      redirect_to post_not_found_path
   end
 
   def delete
@@ -42,18 +42,17 @@ class BlogPostController < ApplicationController
   end
 
   def postnotfound
-    @missing_post = params[:id]
   end
 
   private
   def post_params
-    params.require(:blog_post).permit(:title, :body)
+    params.require(:blog_post).permit(:title, :body, :published_at)
   end
 
   def set_blog_post
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = user_signed_in? ? BlogPost.find(params[:id]) : BlogPost.published.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to "/postnotfound/#{params[:id]}"
+      redirect_to post_not_found_path
   end
 
   def authenticate_user!

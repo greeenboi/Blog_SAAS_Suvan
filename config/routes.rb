@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "/post/:id", to: "blog_post#show", as: "post"
 
   # Define the route for the postnotfound page
-  get "/postnotfound/:id", to: "blog_post#postnotfound"
+  get "/postnotfound", to: "blog_post#postnotfound", as: "post_not_found"
 
   # Defines the root path route ("/")
   root "blog_post#index"
