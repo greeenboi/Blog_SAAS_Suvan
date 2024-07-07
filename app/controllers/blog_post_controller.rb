@@ -3,6 +3,7 @@ class BlogPostController < ApplicationController
   before_action :set_blog_post, only: [:edit, :update, :show, :delete]
   def index
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+    @pagy, @blog_posts = pagy(@blog_posts)
   end
 
   def new

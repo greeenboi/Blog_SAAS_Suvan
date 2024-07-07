@@ -4,11 +4,7 @@
     margin: 0;
     padding: 0;
 }
-body {
-    background: currentColor;
-    display: flex;
-    height: 100vh;
-}
+
 /* I. Containers */
 figure {
     font-size: 6px;

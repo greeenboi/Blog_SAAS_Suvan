@@ -8,15 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Seed BlogPosts
-blog_posts = [
-  { title: "First Post", body: "This is the first post.", published_at: Time.now },
-  { title: "Second Post", body: "This is the second post.", published_at: Time.now }
-]
-
-blog_posts.each do |post_attributes|
-  BlogPost.find_or_create_by!(title: post_attributes[:title]) do |post|
-    post.body = post_attributes[:body]
-    post.published_at = post_attributes[:published_at]
-  end
-end
+# 100.times do |i|
+#   BlogPost.create!(
+#     title: "Blog Post #{i}",
+#     content: "This is the content for blog post #{i}",
+#     published_at: Time.current - i.days
+#   )
+# end

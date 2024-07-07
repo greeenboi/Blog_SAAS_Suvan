@@ -81,6 +81,7 @@
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.3, ruby-3.2.4-p170) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.16.6, ruby-3.2.4-p170) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-3.2.4-p170) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pagy (v8.6.3, ruby-3.2.4-p170) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v1.5.6, ruby-3.2.4-p170) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.2, ruby-3.2.4-p170) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v6.0.0, ruby-3.2.4-p170) [gem]" level="application" />
