@@ -4,8 +4,8 @@
     <%= form.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
   </div>
   <div style="margin-bottom: 10px;">
-    <%= form.label :body, style: "display: block; margin-bottom: 5px;" %>
-    <%= form.text_area :body, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; height: 100px;" %>
+    <%= form.label :content, style: "display: block; margin-bottom: 5px;" %>
+    <%= form.rich_text_area :content, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-height: 100px; height:auto" %>
   </div>
   <% if form.object.errors.any? %>
     <div style="background-color: #f44336; color: white; padding: 10px 20px; border-radius: 4px; margin-bottom: 10px;">
