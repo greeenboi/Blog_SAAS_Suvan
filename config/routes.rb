@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/AboutMe'
+  get 'static_pages/ContactMe'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,6 +18,9 @@ Rails.application.routes.draw do
 
   # Define the route for the postnotfound page
   get "/postnotfound", to: "blog_post#postnotfound", as: "post_not_found"
+
+  get "/about", to: "static_pages#AboutMe", as: "about_me"
+  get "/contact", to: "static_pages#ContactMe", as: "contact_me"
 
   # Defines the root path route ("/")
   root "blog_post#index"

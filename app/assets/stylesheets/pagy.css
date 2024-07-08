@@ -15,21 +15,22 @@
     display: block;
     text-decoration: none;
     border-radius: 0.5rem;
-    background-color: #e5e7eb;
+    background-color: transparent;
     padding: 0.25rem 0.75rem;
     color: inherit;
 }
 .pagy a:not(.gap):hover {
     background-color: #d1d5db;
+    color: #112211;
 }
 .pagy a:not(.gap):not([href]) { /* disabled links */
     cursor: default;
-    background-color: #f3f4f6;
-    color: #d1d5db;
+    /*background-color: #dadada;*/
+    color: #2E2F30;
 }
 .pagy a:not(.gap).current {
-    background-color: #9ca3af;
-    color: white;
+    background-color: #F9F5FF;
+    color: #112211;
 }
 .pagy label {
     white-space: nowrap;

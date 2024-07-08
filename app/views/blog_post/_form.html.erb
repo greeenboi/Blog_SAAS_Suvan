@@ -1,30 +1,32 @@
 <%= form_with model: blog_post do |form| %>
-  <div style="margin-bottom: 10px;">
-    <%= form.label :title, style: "display: block; margin-bottom: 5px;" %>
-    <%= form.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
-  </div>
-  <div style="margin-bottom: 10px;">
-    <%= form.label :content, style: "display: block; margin-bottom: 5px;" %>
-    <%= form.rich_text_area :content, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-height: 100px; height:auto" %>
-  </div>
-  <% if form.object.errors.any? %>
-    <div style="background-color: #f44336; color: white; padding: 10px 20px; border-radius: 4px; margin-bottom: 10px;">
-      <ul style="margin: 0;">
-        <% form.object.errors.full_messages.each do |msg| %>
-          <li style="list-style: none"><%= msg %></li>
-        <% end %>
-      </ul>
+  <section style="min-height: max-content; height: 100%; margin: 50px 0px;">
+    <div style="margin-bottom: 10px;">
+      <%= form.label :title, style: "display: block; margin-bottom: 5px;" %>
+      <%= form.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
     </div>
-  <% end %>
-
-  <div style=" display: flex; flex-direction: column; gap: 30px;  background: #fff; border: 1px solid #ccc; border-radius: 4px; padding: 5px; width: 100%;">
-    <%= form.label :published_at  %>
-    <div>
-      <%= form.datetime_select :published_at, end_year: Time.now.year + 5 , include_blank: true %>
+    <div style="margin-bottom: 10px; " class="editor">
+      <%= form.label :content, style: "display: block; margin-bottom: 5px;" %>
+      <%= form.rich_text_area :content, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-height: 100px; height:auto; color:#112211;" %>
     </div>
-  </div>
+    <% if form.object.errors.any? %>
+      <div style="background-color: #f44336; color: white; padding: 10px 20px; border-radius: 4px; margin-bottom: 10px;">
+        <ul style="margin: 0;">
+          <% form.object.errors.full_messages.each do |msg| %>
+            <li style="list-style: none"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.button button_text, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" %>
-  </div>
+    <div style=" display: flex; flex-direction: column; gap: 30px; border: 1px solid #ccc; border-radius: 4px; padding: 5px; width: 100%;">
+      <%= form.label :published_at  %>
+      <div>
+        <%= form.datetime_select :published_at, end_year: Time.now.year + 5 , include_blank: true %>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+      <%= form.button button_text, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" %>
+    </div>
+  </section>
 <% end %>

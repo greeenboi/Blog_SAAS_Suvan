@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyBlog</title>
+    <title>Suvan's Blog</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,40 +11,54 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="margin-top: 10px;">
+  <body style="margin: 10px 0px; display: flex; flex-direction: column; align-items: center;">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% unless current_page?(new_user_session_path) || current_page?(post_not_found_path) %>
-      <nav style="width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px;">
-        <% if user_signed_in? %>
-          <!-- Profile Link -->
-          <%#= link_to edit_user_registration_path, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;" do %>
-<!--            <div class="icon-text-container">-->
-<!--              <i class="fas fa-user"></i>-->
-<!--              <span class="hover-text">Profile</span>-->
-<!--            </div>-->
-          <%# end %>
+      <nav style="width: 100%; max-width: 1216px; display: flex; justify-self: center; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px;">
+        <%= link_to "Suvan GS" , root_path, style: "font-size: 20px; font-weight: bold; line-height: 24px;" %>
+        <div style="display: flex; flex-direction: row; gap: 24px; align-items: center">
+          <div style="display: flex; flex-direction: row; gap: 14px; color: white">
+            <%= link_to "About", about_me_path %>
+            <%= link_to "Contact", contact_me_path %>
+          </div>
+          <% if user_signed_in? %>
+            <!-- Profile Link -->
+            <%#= link_to edit_user_registration_path, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;" do %>
+  <!--            <div class="icon-text-container">-->
+  <!--              <i class="fas fa-user"></i>-->
+  <!--              <span class="hover-text">Profile</span>-->
+  <!--            </div>-->
+            <%# end %>
 
-          <!-- New Post Link -->
-          <%= link_to new_post_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;" do %>
-            <div class="icon-text-container">
+            <!-- New Post Link -->
+            <%= link_to new_post_path, class: "icon-text-container" do %>
               <i class="fas fa-feather-alt"></i>
               <span class="hover-text">New Post</span>
-            </div>
+            <% end %>
+            <%= button_to destroy_user_session_path, method: :delete, form: {class:"icon-text-container"}, style: "color: #D2042D; background: transparent ", data: { turbo_confirm: "Do you wish to sign out?"} do %>
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="hover-text">Sign Out</span>
+            <% end %>
+          <% else %>
+            <%#= link_to 'Sign up', new_user_registration_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
+            <%= link_to 'Sign in', new_user_session_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
           <% end %>
-          <%= button_to destroy_user_session_path, method: :delete, form: {style: "display: inline;"}, style: "background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; position: relative;", data: { turbo_confirm: "Do you wish to sign out?"} do %>
-            <div class="icon-text-container">
-              <i class="fas fa-sign-out-alt"></i>
-              <span class="hover-text">Sign Out</span>
-            </div>
-          <% end %>
-        <% else %>
-          <%#= link_to 'Sign up', new_user_registration_path, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-          <%= link_to 'Sign in', new_user_session_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;" %>
-        <% end %>
+        </div>
       </nav>
     <% end %>
     <%= yield %>
+  <footer style="display: flex; width: 100%; max-width: 1216px; flex-direction: row; justify-content: space-between; align-items: center; gap: 14px; font-size: 20px;">
+    <p>
+      SuvanGS © <%= Time.now.year %>
+    </p>
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 14px; align-items: center;">
+      <a href="https://www.instagram.com/suvangs/"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/greeenboi"><i class="fab fa-github"></i></a>
+      <a href="https://suvangs.vercel.app"><i class="fas fa-globe"></i></a>
+      <a href="https://www.linkedin.com/in/suvan-gowri-shanker-596943261/"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
   </body>
 </html>
 

@@ -14,9 +14,25 @@
  *= require_self
  */
 /* Add this CSS to your application's stylesheet */
+
+html{
+  font-family: "Inter Semi Bold", sans-serif;
+  color: white;
+}
+
+body{
+  background-color: #090D1F;
+}
+
 .icon-text-container {
   display: inline-block; /* or block, depending on your layout */
   position: relative;
+  background-color: transparent;
+  color: #4CAF50;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .hover-text {
