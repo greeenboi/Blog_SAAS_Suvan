@@ -15,3 +15,15 @@
 #     published_at: Time.current - i.days
 #   )
 # end
+
+# (0..99).each do |i|
+#   BlogPost.where(title: "Blog Post #{i}").find_each do |post|
+#     post.destroy
+#   end
+# end
+
+user = User.where(email: "suvan.gowrishanker.204@gmail.com").first_or_initialize
+user.update!(
+  password: "#Heavenwater1",
+  password_confirmation: "#Heavenwater1"
+)

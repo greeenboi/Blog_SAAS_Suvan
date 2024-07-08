@@ -3,6 +3,7 @@ class BlogPost < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 10000 }
+  validates :tags, inclusion: { in: %w[frameworks update feature guide announcement], message: "%{value} is not a valid tag" }
 
   scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(updated_at: :desc) }
   scope :draft, -> { where(published_at: nil)}

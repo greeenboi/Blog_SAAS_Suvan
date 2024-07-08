@@ -1,4 +1,42 @@
-<body style="background-color: #F0F0F0; font-family: 'Candara Light',serif; font-size: 18px; color: #2E2F30; display: block; padding: 10px">
-  <h1 style="font-weight: bold"><%= @blog_post.title %></h1>
-  <p><%= @blog_post.content %></p>
-</body>
+<main style="display: flex; flex-direction: column; min-height: 90vh; height: fit-content; margin: 10px 0px; gap: 24px; padding: 10px; width: 100%; max-width: 1216px;">
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; max-width: 1216px; ">
+    <h1 style="font-weight: bold; width: 100%; margin: 24px 0px;">
+      <%= @blog_post.title %>
+    </h1>
+    <span style="width: 100%; font-weight: lighter; color: #6b7280;">
+      <%= @blog_post.updated_at.strftime("%d %B, %Y at %I:%M %p") %>
+    </span>
+  </div>
+  <div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; border-bottom: 1px solid #6b7280; border-top: 1px solid #6b7280; margin: 24px 0px; height: 60px;">
+    <% if @blog_post.draft? %>
+      <div style="background: lightslategrey; border: 3px solid darkslategrey; border-radius: 24px; box-shadow: 1px 2px 2px gray; width: fit-content; padding: 8px; display: flex; justify-content: flex-start; align-items: center; margin-top: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #666666; font-style: italic; gap: 4px;">
+        Draft
+        <i class="fas fa-drafting-compass"></i>
+      </div>
+    <% elsif @blog_post.scheduled? %>
+      <div style="background: darkseagreen; border: 3px solid seagreen; border-radius: 24px; box-shadow: 1px 1px 1px forestgreen; width: fit-content; padding: 8px; display: flex; justify-content: flex-start; align-items: center; margin-top: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #666666; font-style: italic; gap: 4px;">
+        Scheduled Post
+        <i class="fas fa-stopwatch"></i>
+      </div>
+    <% end %>
+    <span style="background: <%= tag_color(@blog_post.tags) %>; width: fit-content; color: white; padding: 5px 8px; border: none; border-radius: 24px; margin: 14px;"><%= @blog_post.tags %></span>
+    <div style="display: flex; flex-direction: row; gap: 6px; align-items: center;">
+      ↳
+      <div class= "image-container">
+        <%= image_tag('newme.jpg', alt: 'Suvan GS') %>
+      </div>
+      <p>Suvan Gowri Shanker</p>
+    </div>
+    <% if user_signed_in? %>
+      <%= link_to edit_post_path do %>
+        <i class="far fa-edit" style="margin: 0px 10px;"></i>
+      <% end %>
+      <%= button_to @blog_post, method: :delete, form: {style: "display: inline; background: #090D1F; margin: 0px 10px; cursor: pointer;"}, style: "background: #090D1F; color: red; cursor: pointer;", data: { turbo_confirm: "Are you sure you want to delete this post?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <p style="font-family: 'Candara Light',serif; font-size: 18px; color: #2E2F30;">
+    <%= @blog_post.content %>
+  </p>
+</main>

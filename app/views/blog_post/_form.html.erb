@@ -25,6 +25,11 @@
       </div>
     </div>
 
+    <div style="margin-bottom: 10px;">
+      <%= form.label :tags, style: "display: block; margin-bottom: 5px;" %>
+      <%= form.select :tags, %w[frameworks update feature guide announcement], { include_blank: true }, { style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" } %>
+    </div>
+
     <div style="margin-top: 24px; display: flex; flex-direction: row; justify-content: center; align-items: center;">
       <%= form.button button_text, style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" %>
     </div>

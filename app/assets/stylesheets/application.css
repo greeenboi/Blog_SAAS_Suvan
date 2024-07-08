@@ -56,3 +56,42 @@ body{
   display: block;
   opacity: 1;
 }
+.blogpostclass{
+  display: flex;
+  flex-flow: column wrap;
+  flex-direction: row;
+  gap: 20px;
+  margin: 22px 0px;
+  height: max-content;
+}
+
+.blogpostclass > div:nth-child(1),
+.blogpostclass > div:nth-child(4),
+.blogpostclass > div:nth-child(5),
+.blogpostclass > div:nth-child(8),
+.blogpostclass > div:nth-child(9),
+.blogpostclass > div:nth-child(12),
+.blogpostclass > div:nth-child(13){
+  flex-basis: calc(70% - 1px);
+  width: calc(70% - 1px);
+}
+
+.image-container {
+  display: inline-block; /* or 'block', depending on your layout */
+  width: 40px; /* Desired width */
+  height: 40px; /* Desired height */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.image-container:hover img {
+  transform: scale(5);
+}
